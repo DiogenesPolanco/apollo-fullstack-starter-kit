@@ -8,9 +8,11 @@ import mkdirp from 'mkdirp'
 import minilog from 'minilog'
 import _ from 'lodash'
 import crypto from 'crypto'
+
 const pkg = require('../package.json');
 
 import configs from './webpack.config'
+import Plugin from './persistgraphql-plugin'
 
 minilog.enable();
 
@@ -132,6 +134,7 @@ function startServer() {
       }
       serverConfig.plugins.push(new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin());
+      serverConfig.plugins.push(new Plugin());
     }
 
     const compiler = webpack(serverConfig);

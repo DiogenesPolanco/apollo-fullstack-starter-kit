@@ -4,6 +4,10 @@ import { PubSub } from 'graphql-subscriptions'
 import log from '../../log'
 import schema from './schema_def.graphqls'
 
+import queryMap from 'persisted_queries'
+
+console.log("queryMap:", queryMap);
+
 export const pubsub = new PubSub();
 
 const resolvers = {
