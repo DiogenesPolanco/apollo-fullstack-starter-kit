@@ -1,3 +1,11 @@
+/**
+ * Virtual module webpack plugin
+ *
+ * @author Rob Marscher @rmarscher
+ *
+ * MIT License
+ */
+
 /* eslint-disable no-underscore-dangle */
 
 'use strict';
