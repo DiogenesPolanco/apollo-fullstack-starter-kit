@@ -12,7 +12,7 @@ import crypto from 'crypto'
 const pkg = require('../package.json');
 
 import configs from './webpack.config'
-import Plugin from './persistgraphql-plugin'
+import PersistGraphQLPlugin from './persistgraphql-plugin'
 
 minilog.enable();
 
@@ -134,7 +134,7 @@ function startServer() {
       }
       serverConfig.plugins.push(new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin());
-      serverConfig.plugins.push(new Plugin());
+      serverConfig.plugins.push(new PersistGraphQLPlugin());
     }
 
     const compiler = webpack(serverConfig);

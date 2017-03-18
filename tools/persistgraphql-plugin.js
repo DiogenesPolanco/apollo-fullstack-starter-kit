@@ -1,14 +1,20 @@
-const VirtualModulePlugin = require('./virtual-module-plugin');
+const VirtualModulePlugin = require('virtual-module-webpack-plugin');
 const ExtractGQL = require("persistgraphql/lib/src/ExtractGQL").ExtractGQL;
 const fs = require('fs');
 
-export default class Plugin {
+export default class PersistGraphQLPlugin {
   constructor(options) {
     this.options = options;
   }
 
   apply(compiler) {
-    new VirtualModulePlugin({moduleName: 'node_modules/persisted_queries.js', contents: '{}'}).apply(compiler);
+    let vmpOptions = {
+      moduleName: 'node_modules/persisted_queries.js',
+      contents: '{}',
+      ctime: new Date(0).toString(),
+      mtime: new Date(0).toString()
+    };
+    new VirtualModulePlugin(vmpOptions).apply(compiler);
 
     compiler.plugin('compilation', compilation => {
       compilation.plugin('after-optimize-modules', modules => {
